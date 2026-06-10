@@ -38,9 +38,12 @@
     left: 90px;
     z-index: 2;
     pointer-events: all;
-    height: 32px
+    height: 10px
 }
-
+.header_logo img {
+    width: 250px;    /* chỉnh kích thước logo */
+    height: auto;
+}
 .header_contact {
     position: absolute;
     right: 90px;

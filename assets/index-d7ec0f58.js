@@ -84202,7 +84202,7 @@ const Header = () => {
             },
             className: "header_logo",
             children: jsxRuntimeExports.jsx("img", {
-              src: "/images/logo.svg",
+              src: "/images/logo.png",
               alt: "LOGO",
             }),
           }),
@@ -116198,7 +116198,7 @@ const PageWrapper$1 = ut.div`
               children: jsxRuntimeExports.jsx(Link, {
                 to: "/blog",
                 children: jsxRuntimeExports.jsx("img", {
-                  src: "/images/logo.svg",
+                  src: "/images/logo.png",
                   alt: "logo",
                 }),
               }),
