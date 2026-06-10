@@ -44,9 +44,79 @@
     <title>Hailstone</title>
     <script type="module" crossorigin src="assets/index-d7ec0f58.js?v=4"></script>
     <link rel="stylesheet" href="assets/index-7580a79e.css">
+
+    <!-- Override: make all dark backgrounds transparent so video shows through -->
+    <style>
+      html, body {
+        background: transparent !important;
+      }
+
+      /* Remove the near-opaque dark wrapper background */
+      .main_ui_blocks_wrapper {
+        background-color: transparent !important;
+      }
+
+      /* Make publications section transparent (it has its own bg) */
+      .publications_wrapper {
+        background-color: transparent !important;
+      }
+
+      /* Remove backdrop blur that dims the video */
+      .blur {
+        opacity: 0 !important;
+      }
+
+      /* Any other sections that have solid dark bg */
+      .header_gradient_bg {
+        opacity: 0 !important;
+      }
+
+      /* Three.js canvas: sit above video, below UI content */
+      canvas {
+        z-index: 2 !important;
+        position: relative;
+      }
+
+      /* Video stays behind the 3D canvas and UI */
+      #bg-video {
+        z-index: 1 !important;
+      }
+    </style>
   </head>
   <body>
+    <!-- Video background autoplay -->
+    <video
+      id="bg-video"
+      src="/models/video.mp4"
+      autoplay
+      loop
+      muted
+      playsinline
+      disablepictureinpicture
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+        pointer-events: none;
+      "
+    ></video>
+
     <div id="root"></div>
-    
+
+    <script>
+      (function () {
+        // Make Three.js canvas background transparent after load
+        window.addEventListener('load', function () {
+          var canvases = document.querySelectorAll('canvas');
+          canvases.forEach(function(c) {
+            c.style.background = 'transparent';
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
